@@ -32,7 +32,8 @@ jobs:
     - run: bun install
     
     # Build the project (if a build step exists in your package.json)
-    - run: bun run build --if-present
+    - run: |
+        bun run build --if-present
     
     - run: |
         bun run start &  # Start the server in the background

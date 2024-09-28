@@ -12,21 +12,27 @@ jobs:
     strategy:
       matrix:
         node-version: [22.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v4
-    
+
+    # Install Bun
+    - name: Install Bun
+      run: |
+        curl -fsSL https://bun.sh/install | bash
+        echo "$HOME/.bun/bin" >> $GITHUB_PATH  # Add Bun to the PATH for this job
+
+    # Use Node.js (Optional, in case you need Node.js alongside Bun)
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
 
-    # Install dependencies using bun i (preferred for CI environments)
-    - run: bun i
+    # Install dependencies using Bun
+    - run: bun install
     
     # Build the project (if a build step exists in your package.json)
     - run: bun run build --if-present
     
     # Run the application or tests
-    - run:  bun run start
+    - run: bun run start

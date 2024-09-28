@@ -17,7 +17,10 @@ type UserType = {
   name: string;
 };
 
-app.get("/", "Hello elysia");
+app.get("/", {
+  message:"Yes it Works",
+  framework:"Elysia.js"
+});
 
 app.get("/api/user", () => {
   user.push({ id: "4", name: "Jarvis" });

@@ -19,7 +19,7 @@ type UserType = {
 
 app.get("/", {
   message:"Yes it Works",
-  framework:"Elysia.js"
+  framework:"Elysia.js Backend"
 });
 
 app.get("/api/user", () => {

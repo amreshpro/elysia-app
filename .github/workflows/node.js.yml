@@ -22,11 +22,11 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    # Install dependencies using npm ci (preferred for CI environments)
-    - run: npm ci
+    # Install dependencies using bun i (preferred for CI environments)
+    - run: bun i
     
     # Build the project (if a build step exists in your package.json)
-    - run: npm run build --if-present
+    - run: bun run build --if-present
     
     # Run the application or tests
-    - run: node ./dist/index.js
+    - run:  bun run start

@@ -34,5 +34,6 @@ jobs:
     # Build the project (if a build step exists in your package.json)
     - run: bun run build --if-present
     
-    # Run the application or tests
-    - run: bun run start
+    - run: |
+        bun run start &  # Start the server in the background
+        echo $! > pid.txt  # Save the process ID for later use
